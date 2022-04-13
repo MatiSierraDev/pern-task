@@ -24,5 +24,5 @@ app.use(errorNotFound)
 app.use(handligErrors)
 
 app.listen(port, () => {
-  console.log(colors.bgCyan(`Listen on port ${port}`))
+  console.log(colors.bgCyan(`Listen on port ${port}`|| 5000))
 })

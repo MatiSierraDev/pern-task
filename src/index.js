@@ -7,7 +7,7 @@ const errorNotFound = require('./middleware/error_not_found')
 const handligErrors = require('./middleware/handlig-errors')
 
 const app = express()
-// const port = 8000
+const port = process.env.PORT || 5000
 
 app.use(cors())
 
@@ -23,6 +23,6 @@ app.use(errorNotFound)
 //middleware handling errors
 app.use(handligErrors)
 
-app.listen( procces.env.PORT || 5000, () => {
+app.listen( port, () => {
   console.log(colors.bgCyan('server listening'))
 })

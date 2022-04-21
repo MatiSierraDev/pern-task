@@ -14,7 +14,7 @@ import Alert from "@reach/alert";
 
 const TaskForm = () => {
   const paramsId = useParams()
-  
+  console.log(paramsId)
   const [form, setForm] = useState({
     title: '',
     description: '',
@@ -35,8 +35,20 @@ const TaskForm = () => {
     if(update){
       console.log('update')
       try{
+        
+        // const URL = import.meta.env.VITE_BASE_URl ? `${import.meta.env.VITE_BASE_URL}/task/${paramsId.id}` : `http://localhost:8000/task/${paramsId.id}`
 
-        const res = await fetch(`http://localhost:8000/task/${paramsId.id}`, {
+        let URL;
+
+        if(import.meta.env.VITE_BASE_URL){
+          URL= `${import.meta.env.VITE_BASE_URL}/task/${paramsId.id}`
+          console.log('proces true')
+        }else{
+          URL= `http://localhost:8000/task/${paramsId.id}`
+          console.log('proces false')
+        }
+
+        const res = await fetch(URL, {
           method:'PUT',
           headers:{
             "Content-type":"application/json"
@@ -65,7 +77,7 @@ const TaskForm = () => {
         setLoading(true)
     
     
-        const URL = `http://localhost:8000/task`
+        const URL =  import.meta.env.VITE_BASE_URL ? `${import.meta.env.VITE_BASE_URL}/task` : `http://localhost:8000/task`
         const options = {
           method: 'POST',
           headers:{
@@ -111,7 +123,7 @@ const TaskForm = () => {
   const getTask = async(id) => {
     try{
 
-      const url = `http://localhost:8000/task/${id}`
+      const url = import.meta.env.VITE_BASE_URl ? `${import.meta.env.VITE_BASE_URL}/task/${id}` : `https://pern-task.herokuapp.com/task/${id}`
       const options = {
         method: 'GET',
         headers: {

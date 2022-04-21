@@ -18,8 +18,10 @@ const TaskList = () => {
   const navigate = useNavigate()
 
   const loadTask = async () => {
+
+    
     setLoading(true)  
-    const url = `http://localhost:8000`
+    const url =  import.meta.env.VITE_BASE_URL ? import.meta.env.VITE_BASE_URL : `http://localhost:8000/`
     const options = {
       method: 'GET',
       headers: {
@@ -36,10 +38,10 @@ const TaskList = () => {
   }
 
   const deleteTask = async(id) => {
-
-    setLoading(true)  
     
-    const url= `http://localhost:8000/task/${id}`
+    setLoading(true)
+
+    const url= import.meta.env.VITE_BASE_URl ? `${import.meta.env.VITE_BASE_URL}/task/${id}` : `https://pern-task.herokuapp.com/task/${id}`
     const options = {
       method: 'DELETE',
     }

@@ -3,3 +3,5 @@ client
 database
 
 node_modules
+
+.env

@@ -10,6 +10,7 @@ const path = require('path')
 const app = express()
 const port = process.env.PORT || 5000
 
+
 app.use(cors())
 
 app.use(express.json())
@@ -17,9 +18,13 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(morgan('dev'))
 
-app.use(app.static(path.join(__dirname, 'dist')));
+app.use(app.static(path.join(__dirname, 'client/dist')));
 
 app.use(taskRoutes)
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/dist/index.html'));
+});
 
 //middleware 404 not found route
 app.use(errorNotFound)

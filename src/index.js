@@ -1,7 +1,6 @@
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
-const colors = require('colors')
 const taskRoutes = require('./routes/task.routes')
 const errorNotFound = require('./middleware/error_not_found')
 const handligErrors = require('./middleware/handlig-errors')
@@ -24,5 +23,5 @@ app.use(errorNotFound)
 app.use(handligErrors)
 
 app.listen( port, () => {
-  console.log(colors.bgCyan('server listening'))
+  console.log(`server listening ${port}`)
 })

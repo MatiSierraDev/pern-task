@@ -18,12 +18,12 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(morgan('dev'))
 
-app.use(app.static(path.join(__dirname, 'client/dist')));
+app.use(app.static(path.join(__dirname, 'dist')));
 
 app.use(taskRoutes)
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'/client/dist/index.html'));
+  res.sendFile(path.join(__dirname+'dist/index.html'));
 });
 
 //middleware 404 not found route

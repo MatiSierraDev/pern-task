@@ -17,8 +17,6 @@ app.use(express.urlencoded({ extended: true }))
 app.use(morgan('dev'))
 app.use(taskRoutes)
 
-app.use(express.static(path.join(__dirname, 'dist')));
-
 //middleware 404 not found route
 app.use(errorNotFound)
 

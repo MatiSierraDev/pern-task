@@ -19,10 +19,6 @@ app.use(taskRoutes)
 
 app.use(express.static(path.join(__dirname, 'dist')));
 
-app.get('/*', function(req,res) {
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
-
 //middleware 404 not found route
 app.use(errorNotFound)
 
